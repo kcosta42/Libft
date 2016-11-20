@@ -6,7 +6,7 @@
 /*   By: kcosta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:16:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/08 09:04:58 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/20 10:50:23 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 
 # include <string.h>
+
+# define BUFF_SIZE 1024
 
 typedef	unsigned char	t_byte;
 
@@ -95,5 +97,6 @@ char				*ft_itoa(int n);
 int					ft_atoi(const char *str);
 int					ft_wcount(const char *s, int c);
 int					ft_dcount(int n);
+int					ft_getline(const int fd, char **line);
 
 #endif
