@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 17:13:35 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/30 17:19:57 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/12/03 11:11:38 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 
+int		ft_getopt(int argc, char **argv,
+									const char *ft_optstring, int *ft_optind);
 int		ft_getline(const int fd, char **line);
 
 #endif

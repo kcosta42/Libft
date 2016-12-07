@@ -6,7 +6,7 @@
 #*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/02 10:00:00 by kcosta            #+#    #+#             *#
-#*   Updated: 2016/12/01 15:05:41 by kcosta           ###   ########.fr       *#
+#*   Updated: 2016/12/04 18:17:59 by kcosta           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -78,9 +78,11 @@ FILES =	string/ft_strcat.c \
 		memory/ft_memcmp.c \
 		memory/ft_memset.c \
 		memory/ft_memmove.c \
+		memory/ft_memdup.c \
 		utils/ft_atoi.c \
 		utils/ft_itoa.c \
 		utils/ft_getline.c \
+		utils/ft_getopt.c \
 		print/ft_printf_address.c \
 		print/ft_printf_check.c \
 		print/ft_printf.c \
