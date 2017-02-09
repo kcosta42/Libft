@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strinsert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 15:54:21 by kcosta            #+#    #+#             */
-/*   Updated: 2017/01/11 10:29:52 by kcosta           ###   ########.fr       */
+/*   Created: 2016/12/14 15:53:27 by kcosta            #+#    #+#             */
+/*   Updated: 2016/12/14 15:57:51 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ctype.h"
+#include "ft_string.h"
 
-int		ft_isalnum(int c)
+char	*ft_strinsert(char **str, char c, size_t index)
 {
-	int i;
+	char	*ret;
 
-	i = 0;
-	return (ft_isalpha(c) | ft_isdigit(c));
+	if (!str || index > ft_strlen(*str))
+		return (NULL);
+	ret = ft_strnew(ft_strlen(*str) + 1);
+	ret = ft_strncpy(ret, *str, index);
+	ret[index] = c;
+	ret = ft_strcat(ret, *str + index);
+	ft_strdel(str);
+	*str = ft_strdup(ret);
+	ft_strdel(&ret);
+	return (*str);
 }

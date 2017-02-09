@@ -6,136 +6,166 @@
 #*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/02 10:00:00 by kcosta            #+#    #+#             *#
-#*   Updated: 2016/12/04 18:17:59 by kcosta           ###   ########.fr       *#
+#*   Updated: 2017/02/09 14:01:04 by kcosta           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
-BOLD = $(shell echo "\033[1m")
-BOLD_END = $(shell echo "\033[21m")
-RED = $(shell echo "\033[31m")
-GREEN = $(shell echo "\033[32m")
-YELLOW = $(shell echo "\033[33m")
-BLUE = $(shell echo "\033[34m")
-MAGENTA = $(shell echo "\033[35m")
-EOC = $(shell echo "\033[0m")
+# =========== Colors =========== #
+CLEAR			:= "\033[2K"
+UP				:= "\033[A"
+EOC				:= "\033[0;0m"
+BLACK			:= "\033[0;30m"
+RED				:= "\033[0;31m"
+GREEN			:= "\033[0;32m"
+YELLOW			:= "\033[0;33m"
+BLUE			:= "\033[0;34m"
+PURPLE			:= "\033[0;35m"
+CYAN			:= "\033[0;36m"
+WHITE			:= "\033[0;37m"
+# ============================== #
 
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-NAME = libft.a
-SRCS_PATH = srcs/
-INCLUDES_PATH = includes/
-INCLUDES =	libft.h \
-			ft_string.h \
-			ft_ctype.h \
-			ft_memory.h \
-			ft_utils.h \
-			ft_print.h \
-			ft_list.h
-FILES =	string/ft_strcat.c \
-		string/ft_strclr.c \
-		string/ft_strchr.c \
-		string/ft_strdel.c \
-		string/ft_strcmp.c \
-		string/ft_strcpy.c \
-		string/ft_strequ.c \
-		string/ft_striter.c \
-		string/ft_strdup.c \
-		string/ft_strlen.c \
-		string/ft_striteri.c \
-		string/ft_strlcat.c \
-		string/ft_strjoin.c \
-		string/ft_strmap.c \
-		string/ft_strncat.c \
-		string/ft_strmapi.c \
-		string/ft_strnequ.c \
-		string/ft_strncmp.c \
-		string/ft_strncpy.c \
-		string/ft_strnew.c \
-		string/ft_strrev.c \
-		string/ft_strrchr.c \
-		string/ft_strnstr.c \
-		string/ft_strsub.c \
-		string/ft_strstr.c \
-		string/ft_strtrim.c \
-		string/ft_strsplit.c \
-		ctype/ft_isalnum.c \
-		ctype/ft_isascii.c \
-		ctype/ft_isblank.c \
-		ctype/ft_isdigit.c \
-		ctype/ft_isalpha.c \
-		ctype/ft_islower.c \
-		ctype/ft_isspace.c \
-		ctype/ft_isupper.c \
-		ctype/ft_toupper.c \
-		ctype/ft_tolower.c \
-		ctype/ft_isprint.c \
-		memory/ft_bzero.c \
-		memory/ft_memalloc.c \
-		memory/ft_memccpy.c \
-		memory/ft_memcpy.c \
-		memory/ft_memdel.c \
-		memory/ft_memchr.c \
-		memory/ft_memcmp.c \
-		memory/ft_memset.c \
-		memory/ft_memmove.c \
-		memory/ft_memdup.c \
-		utils/ft_atoi.c \
-		utils/ft_itoa.c \
-		utils/ft_getline.c \
-		utils/ft_getopt.c \
-		print/ft_printf_address.c \
-		print/ft_printf_check.c \
-		print/ft_printf.c \
-		print/ft_printf_char.c \
-		print/ft_printf_args.c \
-		print/ft_printf_pourcent.c \
-		print/ft_printf_octal.c \
-		print/ft_printf_hex.c \
-		print/ft_printf_str.c \
-		print/ft_putchar.c \
-		print/ft_putchar_fd.c \
-		print/ft_putendl.c \
-		print/ft_printf_wildcard.c \
-		print/ft_putendl_fd.c \
-		print/ft_putnbr_fd.c \
-		print/ft_putnbr.c \
-		print/ft_putnstr.c \
-		print/ft_putstr.c \
-		print/ft_putstr_fd.c \
-		print/ft_printf_unsigned.c \
-		print/ft_printf_num.c \
-		list/ft_lstadd.c \
-		list/ft_lstdelone.c \
-		list/ft_lstaddback.c \
-		list/ft_lstdel.c \
-		list/ft_lstiter.c \
-		list/ft_lstmap.c \
-		list/ft_lstnew.c
-SRCS = $(addprefix $(SRCS_PATH), $(FILES))
-OBJS = $(SRCS:.c=.o)
+# ========== Editable ========== #
+NAME			:= libft.a
+# ============================== #
+
+# ========== Standard ========== #
+CC				:= gcc
+FLAGS			:= -Wall -Wextra -Werror
+# ============================== #
+
+# =========== Files ============ #
+SRCS_FILES		:=	string/ft_strcat.c			\
+					string/ft_strclr.c			\
+					string/ft_strchr.c			\
+					string/ft_strdel.c			\
+					string/ft_strswp.c			\
+					string/ft_strcmp.c			\
+					string/ft_strcpy.c			\
+					string/ft_strequ.c			\
+					string/ft_striter.c			\
+					string/ft_strinsert.c		\
+					string/ft_strremove.c		\
+					string/ft_strdup.c			\
+					string/ft_strlen.c			\
+					string/ft_striteri.c		\
+					string/ft_strlcat.c			\
+					string/ft_strjoin.c			\
+					string/ft_strmap.c			\
+					string/ft_strncat.c			\
+					string/ft_strmapi.c			\
+					string/ft_strnequ.c			\
+					string/ft_strncmp.c			\
+					string/ft_strncpy.c			\
+					string/ft_strnew.c			\
+					string/ft_strrev.c			\
+					string/ft_strrchr.c			\
+					string/ft_strnstr.c			\
+					string/ft_strsub.c			\
+					string/ft_strstr.c			\
+					string/ft_strrstr.c			\
+					string/ft_strtrim.c			\
+					string/ft_strepur.c			\
+					string/ft_strsplit.c		\
+					string/ft_strisalnum.c		\
+					ctype/ft_isalnum.c			\
+					ctype/ft_isascii.c			\
+					ctype/ft_isblank.c			\
+					ctype/ft_isdigit.c			\
+					ctype/ft_isalpha.c			\
+					ctype/ft_islower.c			\
+					ctype/ft_isspace.c			\
+					ctype/ft_isupper.c			\
+					ctype/ft_toupper.c			\
+					ctype/ft_tolower.c			\
+					ctype/ft_isprint.c			\
+					memory/ft_bzero.c			\
+					memory/ft_memalloc.c		\
+					memory/ft_memccpy.c			\
+					memory/ft_memcpy.c			\
+					memory/ft_memdel.c			\
+					memory/ft_memchr.c			\
+					memory/ft_memcmp.c			\
+					memory/ft_memset.c			\
+					memory/ft_memmove.c			\
+					memory/ft_memdup.c			\
+					utils/ft_atoi.c				\
+					utils/ft_itoa.c				\
+					utils/ft_getline.c			\
+					utils/ft_getopt.c			\
+					print/ft_printf_address.c	\
+					print/ft_printf_check.c		\
+					print/ft_printf.c			\
+					print/ft_printf_char.c		\
+					print/ft_printf_args.c		\
+					print/ft_printf_pourcent.c	\
+					print/ft_printf_octal.c		\
+					print/ft_printf_hex.c		\
+					print/ft_printf_str.c		\
+					print/ft_putchar.c			\
+					print/ft_putchar_fd.c		\
+					print/ft_putendl.c			\
+					print/ft_printf_wildcard.c	\
+					print/ft_putendl_fd.c		\
+					print/ft_putnbr_fd.c		\
+					print/ft_putnbr.c			\
+					print/ft_putnstr.c			\
+					print/ft_putstr.c			\
+					print/ft_putstr_fd.c		\
+					print/ft_printf_unsigned.c	\
+					print/ft_printf_num.c		\
+					list/ft_lstadd.c			\
+					list/ft_lstdelone.c			\
+					list/ft_lstaddback.c		\
+					list/ft_lstdel.c			\
+					list/ft_lstiter.c			\
+					list/ft_lstmap.c			\
+					list/ft_lstnew.c
+
+HEADERS_FILES	:=	libft.h		\
+					ft_string.h	\
+					ft_ctype.h	\
+					ft_memory.h	\
+					ft_utils.h	\
+					ft_print.h	\
+					ft_list.h
+# ============================== #
+
+# ========== Sources =========== #
+SRCS_PATH		:= srcs/
+SRCS			:= $(addprefix $(SRCS_PATH), $(SRCS_FILES))
+# ============================== #
+
+# ========== Objects =========== #
+OBJS_PATH		:= objs/
+OBJS_DIRS		:= $(addprefix $(OBJS_PATH), string/ ctype/ memory/ utils/ print/ list/)
+OBJS			:= $(addprefix $(OBJS_PATH), $(SRCS_FILES:.c=.o))
+# ============================== #
+
+# ========== Includes ========== #
+INCLUDES_PATH	:= includes/
+INCLUDES		:= -I $(INCLUDES_PATH)
+HEADERS			:= $(addprefix $(INCLUDES_PATH), $(HEADERS_FILES))
+# ============================== #
+#
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-%.o: %.c
-	@/bin/echo -n $(YELLOW)[$(GREEN)$(BOLD)Compiling $(BLUE)$(notdir $@) $(EOC)$(YELLOW)...]- -$(EOC)
-	@$(CC) $(FLAGS) -I $(INCLUDES_PATH) -c -o $@ $<
-	@/bin/echo "$(YELLOW)[$(BOLD)$(GREEN)Done!$(EOC)$(YELLOW)]$(EOC)"
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(HEADER)
+	@mkdir $(OBJS_PATH) 2> /dev/null || true
+	@mkdir $(OBJS_DIRS) 2> /dev/null || true
+	$(CC) $(FLAGS) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS)
-	@/bin/echo $(YELLOW)[$(MAGENTA)$(BOLD)Creating $(BLUE)$(NAME) $(EOC)$(YELLOW)...]$(EOC)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@/bin/echo "$(YELLOW)[$(BOLD)$(BLUE)$(NAME) $(MAGENTA)Created!$(EOC)$(YELLOW)]$(EOC)"
-
-.PHONY: clean
+	@ar rc -v $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
-	@/bin/echo "$(YELLOW)[$(RED)$(BOLD)Cleaning $(EOC)$(YELLOW)...]$(EOC)"
-	@/bin/rm -f $(OBJS)
-	@/bin/echo "$(YELLOW)[$(RED)$(BOLD)All .o Removed!$(EOC)$(YELLOW)]$(EOC)"
+	@rm -fv $(OBJS)
+	@rmdir $(OBJS_DIRS) 2> /dev/null || true
+	@rmdir $(OBJS_PATH) 2> /dev/null || true
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-	@/bin/echo "$(YELLOW)[$(BOLD)$(BLUE)$(NAME) $(RED)Removed!$(EOC)$(YELLOW)]$(EOC)"
+	@rm -fv $(NAME)
 
 re: fclean all

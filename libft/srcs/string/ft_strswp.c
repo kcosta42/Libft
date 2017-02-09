@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strswp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 15:54:21 by kcosta            #+#    #+#             */
-/*   Updated: 2017/01/11 10:29:52 by kcosta           ###   ########.fr       */
+/*   Created: 2016/12/09 12:03:23 by kcosta            #+#    #+#             */
+/*   Updated: 2016/12/09 12:04:08 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ctype.h"
+#include "ft_string.h"
 
-int		ft_isalnum(int c)
+void		ft_strswp(char **s1, char **s2)
 {
-	int i;
+	char	*tmp;
 
-	i = 0;
-	return (ft_isalpha(c) | ft_isdigit(c));
+	tmp = *s1;
+	*s1 = *s2;
+	*s2 = tmp;
 }

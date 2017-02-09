@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strisalnum.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 15:54:21 by kcosta            #+#    #+#             */
-/*   Updated: 2017/01/11 10:29:52 by kcosta           ###   ########.fr       */
+/*   Created: 2016/12/07 18:07:55 by kcosta            #+#    #+#             */
+/*   Updated: 2016/12/08 15:16:35 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_ctype.h"
 
-int		ft_isalnum(int c)
+int		ft_strisalnum(const char *str)
 {
-	int i;
-
-	i = 0;
-	return (ft_isalpha(c) | ft_isdigit(c));
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		if (!ft_isalnum(*str) && *str != '_')
+			return (0);
+		str++;
+	}
+	return (1);
 }

@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 15:54:21 by kcosta            #+#    #+#             */
-/*   Updated: 2017/01/11 10:29:52 by kcosta           ###   ########.fr       */
+/*   Created: 2016/12/08 16:40:03 by kcosta            #+#    #+#             */
+/*   Updated: 2016/12/08 16:44:35 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ctype.h"
+#include "ft_string.h"
 
-int		ft_isalnum(int c)
+char	*ft_strrstr(const char *big, const char *little)
 {
-	int i;
+	int		i;
+	int		end;
 
-	i = 0;
-	return (ft_isalpha(c) | ft_isdigit(c));
+	if (!*little)
+		return ((char*)big);
+	end = ft_strlen(big) - 1;
+	while (end)
+	{
+		if (big[end] == *little)
+		{
+			i = 0;
+			while (big[end + i] && little[i] && big[end + i] == little[i])
+				i++;
+			if (!little[i])
+				return ((char*)&big[end]);
+		}
+		end--;
+	}
+	return (NULL);
 }
